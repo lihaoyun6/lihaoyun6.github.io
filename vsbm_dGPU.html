@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no">
@@ -12,8 +12,8 @@
         }
         #btn {
             position: fixed;
-            left: 0px;
-            top: 0px;
+            left: 6px;
+            top: 30px;
         }
         #c1 {
             position: fixed;
@@ -28,27 +28,33 @@
         }
         #config {
             position: fixed;
-            left: 0px;
-            top: 30px;
+            left: 6px;
+            top: 60px;
             display: none;
+        }
+        .fps {
+            font-family: sans-serif;
+            position: fixed;
+            color: #FFF
         }
     </style>
 </head>
 <body style="overflow-x:hidden;overflow-y:hidden">
 <div id="main">
     <canvas id="c1" width="1024" height="1024">
-        <span>不支持canvas浏览器</span>
+        <span>您的浏览器不支持canvas方法</span>
     </canvas>
 </div>
-    <button id="btn">CONFIG</button>
+    <div class="fps">FPS: <span id="fps"></span></div>
+    <button id="btn">修改配置</button>
     <div id="config">
         <textarea name="" id="kernel" cols="30" rows="10"></textarea>
         <br />
-        <button id="apply">APPLY</button>
-        <button id="cancle">CANCLE</button>
+        <button id="apply">应用</button>
+        <button id="cancle">取消</button>
     </div>
     <script>
-alert("trigonometric and inverse trigonometric functions test.\ncreated by cznull@bilibili\nedited by lihaoyun6 to support discrete GPU on macOS");
+    alert("曼德尔球渲染页面, 用于测试您的设备GPU性能.\n由 cznull@bilibili 创建\n由 lihaoyun6@Github 添加FPS显示及macOS平台独显支持");
     var cx, cy;
     var glposition;
     var glright;
@@ -224,6 +230,33 @@ alert("trigonometric and inverse trigonometric functions test.\ncreated by cznul
             event.preventDefault();
         }
     };
+    const fpsElem = document.querySelector("#fps");
+    let then = 0;
+    var fpso = 0;
+    var stamp = 0;
+    function getFps(now) {
+        now *= 0.001;
+        const deltaTime = now - then;
+        then = now;
+        const fps = 1 / deltaTime;
+        if(Math.abs( now - stamp ) >= 0.1) {
+            stamp = now;
+            switch (true) {
+                default:
+                    fpsElem.style.color = "#FFF"
+                    break;
+                case fps < 10:
+                    fpsElem.style.color = "#ec6a5e"
+                    break;
+                case fps < 30:
+                    fpsElem.style.color = "#f4bf50"
+                    break;
+                case fps >= 30:
+                    fpsElem.style.color = "#61c554"
+            }
+            fpsElem.textContent = fps.toFixed(1);
+        }
+    }
     function draw() {
         date = new Date();
         var t2 = date.getTime();
@@ -239,6 +272,7 @@ alert("trigonometric and inverse trigonometric functions test.\ncreated by cznul
         gl.uniform3f(glforward, -Math.cos(ang1) * Math.cos(ang2), -Math.sin(ang2), -Math.sin(ang1) * Math.cos(ang2));
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.finish();
+        getFps(performance.now());
     }
     window.onresize = function () {
         cx = document.body.clientWidth;
@@ -446,7 +480,7 @@ alert("trigonometric and inverse trigonometric functions test.\ncreated by cznul
         gl.useProgram(shaderProgram);
         if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
             var info = gl.getProgramInfoLog(shaderProgram);
-            throw 'Could not compile WebGL program. \n\n' + infov + infof + info;
+            throw '无法编译WebGL程序. \n\n' + infov + infof + info;
         }
         glposition = gl.getAttribLocation(shaderProgram, 'position');
         glright = gl.getUniformLocation(shaderProgram, 'right');
@@ -467,8 +501,8 @@ alert("trigonometric and inverse trigonometric functions test.\ncreated by cznul
         window.requestAnimationFrame(ontimer);
         document.getElementById("kernel").value = KERNEL;
         document.getElementById("btn").addEventListener("click", function() {
-            var state = this.innerText == "CONFIG";
-            this.innerText = state ? "HIDE" : "CONFIG";
+            var state = this.innerText == "修改配置";
+            this.innerText = state ? "隐藏输入框" : "修改配置";
             document.getElementById("config").style.display = state ? "inline" : "none";
         });
         document.getElementById("apply").addEventListener("click", function() {
