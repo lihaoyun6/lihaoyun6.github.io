@@ -14,6 +14,12 @@
             color: inherit;
             text-decoration: inherit;
         }
+        .cannotOpen {
+            color: #EC6A5E;
+        }
+        .cannotOpen:hover {
+            color: #b3190a;
+        }
         .container {
             max-width: 1000px;
             margin: 0 auto; /* 将容器居中 */
@@ -116,6 +122,9 @@
                     <div class="btn-primary">Download QuickRecorder</div>
                 </a>
                 <div style="color: #A3AEBE; font-size: .75em; margin-top: .5em; font-weight: 300;">Only supports macOS 12.3 and later</div>
+                <a class="cannotOpen" style="font-size: .75em; margin-top: .5em; font-weight: 400;" href="https://support.apple.com/102445#openanyway">
+                    How to fix "Apple cannot check it for malicious software"
+                </a>
                 <div style="color: #A3AEBE; font-size: 1em; margin-top: 2em;">Scroll down to see more<br>﹀</div>
             </div>
         </div>
@@ -192,6 +201,9 @@
                     <div class="btn-primary">下载 QuickRecorder</div>
                 </a>
                 <div style="color: #A3AEBE; font-size: .75em; margin-top: .5em; font-weight: 300;">仅支持 macOS 12.3 及以上系统</div>
+                <a class="cannotOpen" style="font-size: .75em; margin-top: .5em; font-weight: 400;" href="https://support.apple.com/102445#openanyway">
+                    点此查看系统提示"无法验证 App 开发者"的解决方法
+                </a>
                 <div style="color: #A3AEBE; font-size: 1em; margin-top: 2em;">下滑查看更多内容<br>﹀</div>
             </div>
         </div>
@@ -252,8 +264,8 @@
         </div>
     </div>
     <script type="text/javascript">
-        var userLang = navigator.language || navigator.userLanguage; 
-        if (userLang.includes("zh", 0)) {
+        var userLang = navigator.language || navigator.userLanguage;
+        if (userLang.includes("zh1", 0)) {
             document.querySelector('.en').style.display = 'none';
             document.querySelector('.zh').style.display = 'block';
         }
