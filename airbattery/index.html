@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no">
+    <title>AirBattery</title>
+    <style>
+        * {
+            margin: 0;
+            font-family: system-ui, sans-serif;
+            text-align: center;
+        }
+        a {
+            color: inherit;
+            text-decoration: inherit;
+        }
+        .cannotOpen {
+            color: #EC6A5E;
+        }
+        .cannotOpen:hover {
+            color: #b3190a;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto; /* 将容器居中 */
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* 垂直居中对齐 */
+        }
+        .container img, span {
+            vertical-align: middle;
+        }
+        .btn-primary {
+            border-radius: .5rem;
+            display: inline-block;
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            padding: 1rem 1.5rem;
+            background-color: #4BA6EE;
+            color: #FFFFFF;
+        }
+        .btn-primary:hover {
+            background-color: #4396D6;
+        }
+        .featureBox {
+            max-width: 1000px;
+            margin: 0 auto; /* 将容器居中 */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 70px;
+        }
+        .featureBox div {
+            width: 452px;
+            margin: 10px;
+        }
+        .featureBox img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .titl {
+            color: #1A202C;
+            font-size: 1.875em;
+            font-weight: 600;
+        }
+        .expl {
+            color: #718096;
+            line-height: 2.25rem;
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+        }
+        .footer {
+            width: 1000px;
+            text-align: center;
+            padding: 2.5em;
+            color: #4BA6EE;
+            background-color: #E9F6FD;
+            border-radius: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 100px;
+            margin-bottom: 40px;
+        }
+        .footer div { vertical-align: middle; }
+        .reverse { flex-direction:row-reverse; }
+        .zh { display: none; }
+        .en { display: block; }
+        @media (max-width: 640px) {
+            .featureBox { flex-direction: column; }
+            .featureBox div { width: 400px; margin: 0; }
+            .featureBox img { margin-top: 40px; }
+            .footer {
+                flex-direction: column;
+                border-radius: 0;
+                margin-bottom: 0;
+            }
+            .footer div { margin: .4em; }
+        }
+        @media (max-width: 400px) {
+            .featureBox div { width: 100%; margin: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="en">
+        <div style="background-color: #F8FAFC; padding: 2em 1em;">
+            <div class="container">
+                <div>
+                    <img src="./images/AirBattery.png" alt="AirBattery Icon" width="32" height="32" />
+                    <span style="font-weight: 400; color: #1B202B">AirBattery</span>
+                </div>
+                <a style="font-size: 1.25rem; font-weight: 500;" href="https://github.com/lihaoyun6/AirBattery">GitHub</a>
+            </div>
+            <div style="margin-top: 3em;">
+                <img src="./images/AirBattery.png" alt="AirBattery Logo" width="200" height="200" />
+                <h1 style="color: #64C868; font-size: 3rem; margin-top: 0.5rem; margin-bottom: 0rem; font-weight: 700; ">AirBattery</h1>
+                <div style="color: #718096; font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 5rem; font-weight: 300; ">Get the battery usage of all your devices at once!</div>
+                <a href="https://github.com/lihaoyun6/AirBattery/releases/latest/">
+                    <div class="btn-primary">Download AirBattery</div>
+                </a>
+                <div style="color: #A3AEBE; font-size: .75em; margin-top: .5em; font-weight: 300;">Only supports macOS 11 and later</div>
+                <a class="cannotOpen" style="font-size: .75em; margin-top: .5em; font-weight: 400;" href="javascript:void(0);" onclick="javascript:document.querySelector('.notar').style.display = 'block';">
+                    Click here to view information about App notarization
+                </a>
+                <div class="notar" style="display: none; color: #A3AEBE; font-size: .75em; margin-top: .5em; font-weight: 300;">
+                    This app has not been notarized by Apple.<br>
+                    But I'm in the process of applying to Apple to become a certified developer, which will take some time.<br>
+                    If you don't trust me, you are right, because you should never trust any app that has not been notarized.<br>
+                    But if you trust me, I will thank you very much. Because trusting a stranger really takes a lot of courage.<br><br>
+                    <a class="cannotOpen" style="font-weight: 600;" href="https://support.apple.com/102445#openanyway">
+                        I trust you, please tell me how to run it
+                    </a>
+                </div>
+                <div style="color: #A3AEBE; font-size: 1em; margin-top: 2em;">Scroll down to see more<br>﹀</div>
+            </div>
+        </div>
+        <div class="featureBox">
+            <div>
+                <h3 class="titl">All-In-One</h3>
+                <div class="expl">AirBattery can automatically collect the battery usage of all your devices and show it to you clearly without installing any client on them.</div>
+            </div>
+            <div>
+                <img src="./images/feature1_en.png" alt="feature alt text"/>
+            </div>
+        </div>
+        <div class="featureBox reverse">
+            <div>
+                <h3 class="titl">Look down, I'm here</h3>
+                <div class="expl">No space for your menu bar? Don’t worry.<br>You can get all information from the Dock.</div>
+            </div>
+            <div>
+                <img src="./images/feature2.png" alt="feature alt text"/>
+            </div>
+        </div>
+        <div class="featureBox">
+            <div>
+                <h3 class="titl">Great Widgets</h3>
+                <div class="expl">AirBattery has many widgets. From single device to 8-in-1, there is always one for you.<br></div>
+            </div>
+            <div>
+                <img src="./images/feature3_en.png" alt="feature alt text"/>
+            </div>
+        </div>
+        <div class="featureBox reverse">
+            <div>
+                <h3 class="titl">It's time to recharge!</h3>
+                <div class="expl">You can set battery alerts for any device in AirBattery in case you forget to charge them.</div>
+            </div>
+            <div>
+                <img src="./images/feature4_en.png" alt="feature alt text"/>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer">
+                <div>
+                    <a href="https://github.com/lihaoyun6/AirBattery/releases/latest/">
+                        <div class="btn-primary">Download AirBattery</div>
+                    </a>
+                </div>
+                <div style="font-size: 1.5em; font-weight: 500;">Download AirBattery now to record your screens</div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer" style="margin-top: 0; background-color: #F5F5FC;">
+                <div style="color: #9691F8; font-size: 1.5em; font-weight: 500;">Need to record your screen? Check out QuickRecorder</div>
+                <div>
+                    <a href="../quickrecorder/">
+                        <div class="btn-primary" style="background-color: #9691F8;">
+                            <img src="./images/QuickRecorder.png" alt="AirBattery Icon" width="30" height="30" />
+                            <span>QuickRecorder</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="zh">
+        <div style="background-color: #F8FAFC; padding: 2em 1em;">
+            <div class="container">
+                <div>
+                    <img src="./images/AirBattery.png" alt="AirBattery Icon" width="32" height="32" />
+                    <span style="font-weight: 400; color: #1B202B">AirBattery</span>
+                </div>
+                <a style="font-size: 1.25rem; font-weight: 500;" href="https://github.com/lihaoyun6/AirBattery">GitHub</a>
+            </div>
+            <div style="margin-top: 3em;">
+                <img src="./images/AirBattery.png" alt="AirBattery Logo" width="200" height="200" />
+                <h1 style="color: #64C868; font-size: 3rem; margin-top: 0.5rem; margin-bottom: 0rem; font-weight: 700; ">AirBattery</h1>
+                <div style="color: #718096; font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 5rem; font-weight: 300; ">在 Mac 端获取并管理你所有其他设备的电量信息</div>
+                <a href="https://github.com/lihaoyun6/AirBattery/releases/latest/">
+                    <div class="btn-primary">下载 AirBattery</div>
+                </a>
+                <div style="color: #A3AEBE; font-size: .75em; margin-top: .5em; font-weight: 300;">仅支持 macOS 11 及以上系统</div>
+                <a class="cannotOpen" style="font-size: .75em; margin-top: .5em; font-weight: 400;" href="https://support.apple.com/102445#openanyway">
+                    点此查看系统提示"无法验证 App 开发者"的解决方法
+                </a>
+                <div style="color: #A3AEBE; font-size: 1em; margin-top: 2em;">下滑查看更多内容<br>﹀</div>
+            </div>
+        </div>
+        <div class="featureBox">
+            <div>
+                <h3 class="titl">设备再多也不怕</h3>
+                <div class="expl">AirBattery 支持隔空读取 iPhone / iPad / iPod touch / Apple Watch / AirPods 和妙控设备等设备, 以及部分第三方蓝牙键鼠和耳机的电量信息.</div>
+            </div>
+            <div>
+                <img src="./images/feature1.png" alt="feature alt text"/>
+            </div>
+        </div>
+        <div class="featureBox reverse">
+            <div>
+                <h3 class="titl">Dock虽小, 却有大用</h3>
+                <div class="expl">AirBattery 可以在 Dock 栏上以集中显示电量信息, 还支持循环自动轮播. 不大, 但够用.</div>
+            </div>
+            <div>
+                <img src="./images/feature2.png" alt="feature alt text"/>
+            </div>
+        </div>
+        <div class="featureBox">
+            <div>
+                <h3 class="titl">好上加好的小组件</h3>
+                <div class="expl">AirBattery 内置了多种精心设计的电量显示小组件, 其中甚至包含可同时显示 8 台设备的大型组件和双排电量组件, 让你一眼尽知所需.</div>
+            </div>
+            <div>
+                <img src="./images/feature3.png" alt="feature alt text"/>
+            </div>
+        </div>
+        <div class="featureBox reverse">
+            <div>
+                <h3 class="titl">忘记充电? 那是过去式了</h3>
+                <div class="expl">AirBattery 支持为任意设备设定低电量提醒,<br>并在合适的时候以合适的方式提醒你充电.</div>
+            </div>
+            <div>
+                <img src="./images/feature4.png" alt="feature alt text"/>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer">
+                <div>
+                    <a href="https://github.com/lihaoyun6/AirBattery/releases/latest/">
+                        <div class="btn-primary">下载 AirBattery</div>
+                    </a>
+                </div>
+                <div style="font-size: 1.5em; font-weight: 500;">立即下载 AirBattery 体验以上所有功能吧</div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer" style="margin-top: 0; background-color: #F5F5FC;">
+                <div style="color: #9691F8; font-size: 1.5em; font-weight: 500;">在找好用的录屏工具吗? 快来看看 QuickRecorder</div>
+                <div>
+                    <a href="../quickrecorder/">
+                        <div class="btn-primary" style="background-color: #9691F8;">
+                            <img src="./images/QuickRecorder.png" alt="QuickRecorder Icon" width="30" height="30" />
+                            <span>QuickRecorder</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var userLang = navigator.language || navigator.userLanguage;
+        if (userLang.includes("zh", 0)) {
+            document.querySelector('.en').style.display = 'none';
+            document.querySelector('.zh').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
