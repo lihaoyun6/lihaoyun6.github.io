@@ -5,6 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no">
     <title>QuickRecorder for Mac</title>
     <style>
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .popup-content {
+            background-color: #fefefe;
+            margin: 18% auto;
+            padding: 20px;
+            border: 0px solid #888;
+            width: 80%;
+            border-radius: 14px;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
         * {
             margin: 0;
             font-family: system-ui, sans-serif;
@@ -106,6 +141,14 @@
 </head>
 <body>
     <div class="en">
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="hidePopup()">&times;</span>
+                <img src="./images/warring_en.png" alt="warring" height="153" />
+                <h2>If you see this when you run QuickRecorder</h2>
+                <p style="color: #718096;"><br>This because my free certificate was revoked due to the 1-year validity limit. Old apps are no longer able to run. Install the latest to fix it.<br><br>If it still does not work after the update, please right-click the app in Finder > "Get Info" > check "Override Malware Protection", and run it again or try again after a few hours<br><br></p>
+            </div>
+        </div>
         <div style="background-color: #F8FAFC; padding: 2em 1em;">
             <div class="container">
                 <div>
@@ -207,6 +250,14 @@
         </div>
     </div>
     <div class="zh">
+        <div id="popup_zh" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="hidePopup()">&times;</span>
+                <img src="./images/warring.png" alt="warring" height="153" />
+                <h2>如果您看到了这个提示</h2>
+                <p style="color: #718096;"><br>因为苹果免费开发者证书只有一年有效期, 我的旧证书已经过期, 所以旧版 App 会无法正常启动. 请下载最新版覆盖安装以修复此问题<br><br>若更新后还是无法运行, 请在访达中右键点击App并选择"显示简介", 再勾选"覆盖恶意软件保护". 然后再次运行或等几个小时后再试<br><br></p>
+            </div>
+        </div>
         <div style="background-color: #F8FAFC; padding: 2em 1em;">
             <div class="container">
                 <div>
@@ -303,6 +354,18 @@
         if (userLang.includes("zh", 0)) {
             document.querySelector('.en').style.display = 'none';
             document.querySelector('.zh').style.display = 'block';
+            var popup = document.getElementById("popup_zh");
+            popup.style.display = "block";
+        } else {
+            var popup = document.getElementById("popup");
+            popup.style.display = "block";
+        }
+        
+        function hidePopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "none";
+            popup = document.getElementById("popup_zh");
+            popup.style.display = "none";
         }
     </script>
 </body>
